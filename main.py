@@ -49,7 +49,7 @@ if __name__ == '__main__':
     while True:
         game = roll_dice()
         game.gameplay()
-        # Ask the user to continue run the game
+        # Ask the user to continue run the app
         continue_rolling = input("\nRun again? [y/n]:-")
         if continue_rolling == 'y' or continue_rolling == 'yes':
             continue
