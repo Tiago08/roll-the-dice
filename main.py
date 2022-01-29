@@ -2,6 +2,7 @@ import random
 import sys
 import os
 
+# Task: Print the dice faces with ASCII
 class roll_dice:
     def __init__(self):
         # Set the dice configuration
@@ -9,6 +10,7 @@ class roll_dice:
 
 
     def gameplay(self):
+        '''Introduction to the game, the input for the user and the handling errors'''
         # Refresh the display
         os.system('cls')
         # Welcome
@@ -38,11 +40,15 @@ class roll_dice:
 
 
     def rolling(self, times):
+        '''Set a counter in 0, increase by 1 until the counter it's equal to the rolling times. During this, the while loop will generate a random roll and append it to the roll result list.'''
         counter = 0
+        # Empty list for the results
+        self.roll_result = []
         while counter < times:
             self.roll = random.randint(self.dice[0], self.dice[-1])
-            print(self.roll)
+            self.roll_result.append(self.roll)
             counter += 1
+        print(self.roll_result)
 
 
 if __name__ == '__main__':
