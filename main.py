@@ -52,16 +52,17 @@ class roll_dice:
                 "└─────────┘",
                 ),
             }
-        self.dice_height = len(self.dice_art[1])
-        self.dice_width = len(self.dice_art[1][0])
-        self.dice_face_separator = " "
+        self.die_height = len(self.dice_art[1])
+        self.die_width = len(self.dice_art[1][0])
+        self.die_face_separator = " "
+
 
     def gameplay(self):
         '''Introduction to the game, the input for the user and the handling errors'''
         # Refresh the display
         os.system('cls')
         # Welcome
-        print("Welcome to Roll the Dice!")
+        print("~~~~~~~~~~~~~~ Roll the Dice ~~~~~~~~~~~~~~\n")
 
         while True:
             # Handling input errors, out of the range and strings
@@ -82,7 +83,6 @@ class roll_dice:
                 continue
 
         os.system('cls')
-        print("~~~~~~~~ RESULTS ~~~~~~~~")
         roll_dice().rolling(self.amount_rolls)
 
 
@@ -95,7 +95,33 @@ class roll_dice:
             self.roll = random.randint(self.dice[0], self.dice[-1])
             self.roll_result.append(self.roll)
             counter += 1
-        print(self.roll_result)
+        roll_dice().generate_dice_faces_diagram(self.roll_result)
+
+    
+    def generate_dice_faces_diagram(self, dice_values):
+        """Return an ASCII diagram of dice faces from `dice_values`."""
+        self.dice_values = dice_values
+
+        # Generate a list of dice faces from DICE_ART
+        self.dice_faces = []
+        for value in self.dice_values:
+            self.dice_faces.append(self.dice_art[value])
+
+        # Generate a list containing the dice faces rows
+        self.dice_faces_rows = []
+        for row_idx in range(self.die_height):
+            self.row_components = []
+            for die in self.dice_faces:
+                self.row_components.append(die[row_idx])
+            self.row_string = self.die_face_separator.join(self.row_components)
+            self.dice_faces_rows.append(self.row_string)
+
+        # Generate header with the word "RESULTS" centered
+        self.width = len(self.dice_faces_rows[0])
+        self.diagram_header = " RESULTS ".center(self.width, "~")
+
+        self.dice_faces_diagram = "\n".join([self.diagram_header] + self.dice_faces_rows)
+        print(self.dice_faces_diagram)
 
 
 if __name__ == '__main__':
