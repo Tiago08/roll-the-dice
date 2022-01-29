@@ -2,6 +2,7 @@ import random
 import sys
 import os
 
+
 class roll_dice:
     def __init__(self):
         # Set the dice configuration
