@@ -2,8 +2,6 @@ import random
 import sys
 import os
 
-# Task: Print the dice faces with ASCII
-
 class roll_dice:
     def __init__(self):
         # Set the dice configuration
