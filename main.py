@@ -3,11 +3,58 @@ import sys
 import os
 
 # Task: Print the dice faces with ASCII
+
 class roll_dice:
     def __init__(self):
         # Set the dice configuration
         self.dice = [1, 2, 3, 4, 5, 6]
-
+        self.dice_art = {
+            1: (
+                "┌─────────┐",
+                "│         │",
+                "│    ●    │",
+                "│         │",
+                "└─────────┘",
+                ),
+            2: (
+                "┌─────────┐",
+                "│  ●      │",
+                "│         │",
+                "│      ●  │",
+                "└─────────┘",
+                ),
+            3: (
+                "┌─────────┐",
+                "│  ●      │",
+                "│    ●    │",
+                "│      ●  │",
+                "└─────────┘",
+                ),
+            4: (
+                "┌─────────┐",
+                "│  ●   ●  │",
+                "│         │",
+                "│  ●   ●  │",
+                "└─────────┘",
+                ),
+            5: (
+                "┌─────────┐",
+                "│  ●   ●  │",
+                "│    ●    │",
+                "│  ●   ●  │",
+                "└─────────┘",
+                ),
+            6: (
+                "┌─────────┐",
+                "│  ●   ●  │",
+                "│  ●   ●  │",
+                "│  ●   ●  │",
+                "└─────────┘",
+                ),
+            }
+        self.dice_height = len(self.dice_art[1])
+        self.dice_width = len(self.dice_art[1][0])
+        self.dice_face_separator = " "
 
     def gameplay(self):
         '''Introduction to the game, the input for the user and the handling errors'''
