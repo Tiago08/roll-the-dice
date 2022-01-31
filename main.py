@@ -82,7 +82,7 @@ class roll_dice:
                 continue
 
         os.system('cls')
-        roll_dice().rolling(self.amount_rolls)
+        roll_dice().generate_dice_faces_diagram(self.amount_rolls)
 
 
     def rolling(self, times):
@@ -97,13 +97,19 @@ class roll_dice:
         roll_dice().generate_dice_faces_diagram(self.roll_result)
 
     
-    def generate_dice_faces_diagram(self, dice_values):
-        """Return an ASCII diagram of dice faces from `dice_values`."""
-        self.dice_values = dice_values
+    def generate_dice_faces_diagram(self, times):
+        """Return an ASCII diagram of dice faces from `roll_result`."""
+        counter = 0
+        # Empty list for the results
+        self.roll_result = []
+        while counter < times:
+            self.roll = random.randint(self.dice[0], self.dice[-1])
+            self.roll_result.append(self.roll)
+            counter += 1
 
         # Generate a list of dice faces from DICE_ART
         self.dice_faces = []
-        for value in self.dice_values:
+        for value in self.roll_result:
             self.dice_faces.append(self.dice_art[value])
 
         # Generate a list containing the dice faces rows
